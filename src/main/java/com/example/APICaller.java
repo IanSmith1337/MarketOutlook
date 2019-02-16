@@ -9,16 +9,19 @@ import java.util.List;
 
 public class APICaller {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HabiticaAction.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Handler.class);
 
     private static List<String> headers = new ArrayList<>();
     private static List<String> headerValues = new ArrayList<>();
 
-    public static String callAPI(String userID, String key, boolean post, boolean get, URL link) {
-        headers.add("Input User Header");
-        headers.add("Input Key Header");
-        headerValues.add(userID);
-        headerValues.add(key);
+    public static String callAPI(boolean post, boolean get, URL link) {
+        if(headers.isEmpty()) {
+            headers.add("Authorization");
+        }
+        if(headerValues.isEmpty()) {
+            headerValues.add("token f2c7e4043c4f785465eb6767d538bba72255da21");
+        }
+
         try {
             if(post && !get) {
                 LOGGER.info("Sending post...");
