@@ -14,9 +14,9 @@ public class APICaller {
     private static List<String> headers = new ArrayList<>();
     private static List<String> headerValues = new ArrayList<>();
 
-    public static String callHabitAPI(String userID, String key, boolean post, boolean get, URL link) {
-        headers.add("x-api-user");
-        headers.add("x-api-key");
+    public static String callAPI(String userID, String key, boolean post, boolean get, URL link) {
+        headers.add("Input User Header");
+        headers.add("Input Key Header");
         headerValues.add(userID);
         headerValues.add(key);
         try {
