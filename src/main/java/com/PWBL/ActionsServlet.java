@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example;
+package com.PWBL;
 
 import com.google.actions.api.App;
 import org.slf4j.Logger;

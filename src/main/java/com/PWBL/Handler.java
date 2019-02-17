@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example;
+package com.PWBL;
 
 import com.google.actions.api.ActionRequest;
 import com.google.actions.api.ActionResponse;
@@ -25,10 +25,10 @@ import com.google.api.services.actions_fulfillment.v2.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.URL;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ResourceBundle;
-
-import static com.example.APICaller.callAPI;
 
 /**
  * Implements all intent handlers for this Action. Note that your App must extend from DialogflowApp
@@ -71,21 +71,26 @@ public class Handler extends DialogflowApp {
     LOGGER.info("API intent start.");
     ResponseBuilder responseBuilder = getResponseBuilder(request);
     ResourceBundle rb = ResourceBundle.getBundle("resources");
-    String result = "The API call failed.";
-    URL link = null;
+    File file = new File("powerball.txt");
+    StringBuilder result = new StringBuilder();
     try {
-      link = new URL("url.com");
-      result = callAPI(false, true, link);
-      LOGGER.info(result);
+      BufferedReader reader = new BufferedReader(new FileReader(file));
+      String line = reader.readLine();
+      int lineCount = 1;
+      while(line != null && lineCount < 3) {
+        result.append(line);
+        line = reader.readLine();
+        lineCount++;
+      }
     } catch (Exception e) {
       LOGGER.error(e.toString());
       StackTraceElement[] stacktrace = e.getStackTrace();
       for (Object o: stacktrace) {
         LOGGER.error(o.toString());
       }
-    }*/
+    }
 
     LOGGER.info("Bye intent end.");
-    return responseBuilder.add(result).build();
+    return responseBuilder.add(result.toString()).build();
   }
 }
