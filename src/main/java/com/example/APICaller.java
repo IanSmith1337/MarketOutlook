@@ -16,10 +16,10 @@ public class APICaller {
 
     public static String callAPI(boolean post, boolean get, URL link) {
         if(headers.isEmpty()) {
-            headers.add("Authorization");
+            headers.add(null);
         }
         if(headerValues.isEmpty()) {
-            headerValues.add("token f2c7e4043c4f785465eb6767d538bba72255da21");
+            headerValues.add(null);
         }
 
         try {

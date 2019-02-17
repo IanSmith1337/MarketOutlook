@@ -71,10 +71,10 @@ public class Handler extends DialogflowApp {
     LOGGER.info("API intent start.");
     ResponseBuilder responseBuilder = getResponseBuilder(request);
     ResourceBundle rb = ResourceBundle.getBundle("resources");
-    /*String result = "The API call failed.";
+    String result = "The API call failed.";
     URL link = null;
     try {
-      link = new URL("https","api.github.com","/zen/");
+      link = new URL("url.com");
       result = callAPI(false, true, link);
       LOGGER.info(result);
     } catch (Exception e) {
